@@ -2,6 +2,7 @@ import { Products } from "./types/Product";
 
 export const simpleProducts:Products[]=[
    {
+      id:"1",
       productId: 571,
       productSku: "A93",
       productName: "Loafers ",
@@ -15,6 +16,7 @@ export const simpleProducts:Products[]=[
       categoryName: "Shoes"
     },
     {
+      id:"2",
       productId: 569,
       productSku: "A91",
       productName: "BOAT SHOES",
@@ -28,6 +30,7 @@ export const simpleProducts:Products[]=[
       categoryName: "Shoes"
     },
     {
+            id:"3",
       productId: 570,
       productSku: "A92",
       productName: "BLUCHERS",

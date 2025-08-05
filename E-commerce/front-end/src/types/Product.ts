@@ -1,4 +1,5 @@
 export type Products={
+      id:string
       productId: Number,
       productSku: string,
       productName:string ,
@@ -9,5 +10,6 @@ export type Products={
       deliveryTimeSpan: string,
       categoryId: number,
       productImageUrl: string,
-      categoryName: string
+      categoryName: string,
+      
 }

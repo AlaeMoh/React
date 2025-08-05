@@ -1,6 +1,10 @@
+import cors from 'cors'
 import express, { Request, Response } from 'express'
 import { simpleProducts } from './data'
+
 const app = express()
+
+app.use(cors({ origin: 'http://localhost:3000' }));
 app.get('/api/products', (req: Request, res: Response) => {
   res.json(simpleProducts)
 })

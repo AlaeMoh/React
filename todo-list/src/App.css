@@ -1,0 +1,31 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+#root{
+  background-color: rgb(169, 180, 126);
+  height: 100vh;
+
+}
+
+.todo{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: white;
+  text-align: center;
+  font-size:xx-large;
+  padding-top: 20px;
+ 
+
+}
+
+.list-group{
+  cursor: pointer;
+}
+
+.done{
+  text-decoration: line-through;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  width:350px
+}

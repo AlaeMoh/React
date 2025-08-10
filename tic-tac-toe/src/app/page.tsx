@@ -1,8 +1,6 @@
 "use client"; 
-import styles from "./page.module.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from "react";
-import { global } from "styled-jsx/css";
 import Cell from "./components/Cell";
 
 

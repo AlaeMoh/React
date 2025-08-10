@@ -1,0 +1,5 @@
+.home{
+    background-image: url(../../assets/pizza.jpg);
+    background-size:cover;
+    height: 80vh;
+}

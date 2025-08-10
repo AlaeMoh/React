@@ -1,6 +1,6 @@
 "use client"; 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Cell from "./components/Cell";
 
 
@@ -28,8 +28,9 @@ export default function Home() {
     setGo("circle")
     setWinner(null)
   }
-  const winningCombos = [
-  [0, 1, 2],
+
+  const winningCombos = useMemo(() => [
+   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
   [0, 3, 6],
@@ -37,7 +38,9 @@ export default function Home() {
   [2, 5, 8],
   [0, 4, 8],
   [2, 4, 6],
-  ];
+  
+], []);
+
 
  
 
@@ -63,7 +66,7 @@ export default function Home() {
   if (!winnerFound && cells.every((cell) => cell !== "")) {
     setTiesCount((prev) => prev + 1);
   }
-}, [cells]);
+}, [cells, winningCombos]);
 
 
   console.log(cells)

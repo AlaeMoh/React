@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction } from "react";
-import { global } from "styled-jsx/css";
 
 type cellProps={
     id:number;
@@ -12,7 +11,8 @@ type cellProps={
 }
 
 const Cell= ({go, setGo, id, cells, setCells, cell, winner }: cellProps)=>{
-  const  handleClick= (e)=>{
+  const  handleClick= (e: React.MouseEvent<HTMLButtonElement>)=>{
+    console.log(e.target);
     if(winner){
         return
     }
@@ -30,7 +30,7 @@ const Cell= ({go, setGo, id, cells, setCells, cell, winner }: cellProps)=>{
   }
 
   const handleCellChange= (cellChange:string)=>{
-    let copyCells= [...cells]
+    const copyCells= [...cells]
     copyCells[id]= cellChange
     setCells(copyCells)
   }

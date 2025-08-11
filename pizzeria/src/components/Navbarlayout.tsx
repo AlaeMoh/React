@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Logo from "../../assets/pizzaLogo.png";
+import Logo from "../assets/pizzaLogo.png";
 import { useRouter } from "next/navigation";
 
 
@@ -31,7 +31,7 @@ export default function Navbarlayout() {
             navbarScroll
           >
             <Nav.Link className='text-white' onClick={goHome}>Home</Nav.Link>
-            <Nav.Link  className='text-white' href="/Menu">Menu </Nav.Link>
+            <Nav.Link  className='text-white' href="/menu">Menu </Nav.Link>
             <Nav.Link className='text-white' href="#action2">About  </Nav.Link>
             <Nav.Link className='text-white' href="#">
               Contact  

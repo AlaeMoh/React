@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import {MenuList} from '../app/helpers/MenuList'
+import {MenuList} from '../helpers/MenuList'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Menu() {

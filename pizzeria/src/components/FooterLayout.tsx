@@ -8,7 +8,7 @@ import React from 'react'
 
 export default function FooterLayout() {
   return (
- <footer className="bg-black text-light  position-absolute bottom-0 w-100">
+ <footer className=" bg-black text-light  position-sticky bottom-0 w-100">
       <Container className="footer">
         <Row className="">
           {/* Brand Info */}

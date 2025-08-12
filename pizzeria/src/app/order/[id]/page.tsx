@@ -38,6 +38,8 @@ export default function Page({params}:{ params: { id: string } }) {
               src={pizza.image.src}
               alt={pizza.name}
               className="card-img-top rounded-top-4"
+              width={10}
+              height={320}
             />
             <div className="card-body">
               <h4 className="card-title text-center">{pizza.name}</h4>

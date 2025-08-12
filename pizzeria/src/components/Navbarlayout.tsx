@@ -27,7 +27,7 @@ export default function Navbarlayout() {
  <Navbar expand="lg" className="navbar">
       <Container fluid>
 
-        <Navbar.Brand ><Image className="logo" src={Logo.src} alt="Logo" />
+        <Navbar.Brand ><Image className="logo" src={Logo.src} alt="Logo" width={70} height={50} />
 
 </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />

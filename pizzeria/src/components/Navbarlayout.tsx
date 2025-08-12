@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -7,6 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Logo from "../assets/pizzaLogo.png";
 import { useRouter } from "next/navigation";
+import Image  from "next/image"
 
 
 export default function Navbarlayout() {
@@ -14,13 +15,19 @@ export default function Navbarlayout() {
   const goHome= ()=>{
     router.push("/")
   }
-
+  const [query, setQuery]= useState("")
+  const handleSearch= (e:React.FormEvent)=>{
+    e.preventDefault();
+    if(query.trim()){
+      router.push(`/search?query=${encodeURIComponent(query)}`);
+    }
+  }
   return (
 
  <Navbar expand="lg" className="navbar">
       <Container fluid>
 
-        <Navbar.Brand ><img className="logo" src={Logo.src} alt="Logo" />
+        <Navbar.Brand ><Image className="logo" src={Logo.src} alt="Logo" />
 
 </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -32,8 +39,8 @@ export default function Navbarlayout() {
           >
             <Nav.Link className='text-white' onClick={goHome}>Home</Nav.Link>
             <Nav.Link  className='text-white' href="/menu">Menu </Nav.Link>
-            <Nav.Link className='text-white' href="#action2">About  </Nav.Link>
-            <Nav.Link className='text-white' href="#">
+            <Nav.Link className='text-white' href="/about">About  </Nav.Link>
+            <Nav.Link className='text-white' href="/contact">
               Contact  
             </Nav.Link>
           </Nav>
@@ -43,8 +50,10 @@ export default function Navbarlayout() {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              value={query}
+              onChange={(e)=>{setQuery(e.target.value)}}
             />
-            <Button variant="outline-danger"  className='text-white'>Search</Button>
+            <Button variant="outline-danger"  className='text-white' onClick={handleSearch}>Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>

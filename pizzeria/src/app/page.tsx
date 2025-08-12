@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbarlayout from "../components/Navbarlayout";
 import Home1 from '../app/home/page';
 export default function Home() {
 

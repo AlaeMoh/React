@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
+    "proxy": "https://freeapi.miniprojectideas.com",
   "dependencies": {
     "bootstrap": "^5.3.7",
     "next": "15.4.6",

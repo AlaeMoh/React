@@ -1,0 +1,11 @@
+.title{
+    font-family: cursive;
+    color: rgb(225, 97, 97);
+}
+
+.imagsource{
+    width: 250px;
+    height: 250px;
+    justify-self:center ;
+    border-radius: 5px;
+}

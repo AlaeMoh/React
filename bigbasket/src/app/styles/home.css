@@ -1,0 +1,15 @@
+.imagsource{
+    width: 250px;
+    height: 150px;
+    justify-self:center ;
+    border-radius: 5px;
+}
+
+.head{
+    font-family:cursive ;
+    padding-bottom: 10px;
+}
+
+.toggles{
+    background-color: aliceblue;
+}

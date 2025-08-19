@@ -1,7 +1,10 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
-import Image from 'next/image';
+import "../styles/home.css";
+import Carousel from '../carousel/page'
+import Toggles from '../toggles/page'
+import Link from 'next/link';
 
     interface Product{
        productId: number,
@@ -21,38 +24,53 @@ export default function Page() {
 
     const [products, setProducts] = useState<Product[]>([])
     const [loading, setLoading]= useState(true)
-    // useEffect(()=>{
-    //     fetch("https://freeapi.miniprojectideas.com/api/BigBasket/GetAllProducts")
-    //     .then((res)=>res.json())
-    //     .then((data)=>{
-    //         setProducts(data.data);
-    //         setLoading(false)
-    //     })
-    //     .catch((error)=>{
-    //         console.error("Error fetching products:", error);
-    //         setLoading(false)
-    //     })
-    // }, [])
+
+
+    const fetchProducts= async()=>{
+      try {
+        const res = await fetch("/api/products");
+        const data= await res.json();
+        setProducts(data.data);
+      }catch (error){
+       console.error("Error fetching products:", error);
+
+      }finally{
+        setLoading(false)
+      }
+    }
+    useEffect(()=>{
+      fetchProducts();
+
+    }, [])
      if (loading) {
     return <p className="text-center mt-5">Loading products...</p>;
   }
   return (
      <div className="container my-5">
-      <h1 className="mb-4">BigBasket Products</h1>
-      {/* <div className="row">
-        {products.slice(0, 10).map((product) => (
+      <div className="toggles">
+         <Toggles></Toggles>
+      </div>
+       <div className="carousel">
+        <Carousel></Carousel>
+       </div>
+      <h1 className=" head mb-4 text-danger text-center">BigBasket Products</h1>
+      <div className="row">
+        {products.map((product) => (
           <div className="col-md-3 col-sm-6 mb-4" key={product.productId}>
-            <div className="card h-100">
-                <Image src={product.productImageUrl} width={10} height={10} alt={''}></Image>
+            <div className="card h-100 d-flex">
+              <Link href={"/product/id"}>
+              <img src={product.productImageUrl} alt="" className='imagsource'/>
+              </Link>
+               
               <div className="card-body">
                 <h5 className="card-title">{product.productName}</h5>
-                <p className="card-text">Price: ₹{product.productPrice}</p>
+                <p className="card-text">Price: ${product.productPrice}</p>
                 <button className="btn btn-success w-100">Add to Cart</button>
               </div>
             </div>
           </div>
         ))}
-      </div> */}
+      </div>
     </div>
   )
 }

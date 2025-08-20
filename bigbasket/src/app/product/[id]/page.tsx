@@ -1,4 +1,9 @@
-import React, { use, useState } from 'react'
+"use client"
+import { useParams } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
+// import Image from "next/image";
+// import { useRouter } from 'next/router';
+
 
 
     interface Product{
@@ -14,12 +19,88 @@ import React, { use, useState } from 'react'
        productImageUrl: string,
        categoryName: string
     }
-export default function Page({ params }: { params: Promise<{ id: string }>}) {
-    const {id}= use(params);
-    const productId= Number(id)
-    const [products, setProducts]= useState<Product[]>([])
-    const [loading, setLoading]= useState(true)
+
+export default function Page() {
+  const params = useParams();
+  // const router = useRouter()
+  const {id} = params;
+  const [products , setProducts] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true)
+  // const [cart, setCart] = useState<Product[]>([]);
+
+  useEffect(()=> {
+    const fetchProduct = async ()=>{
+      try{
+        const res =await fetch("/api/products", {cache: "no-store"})
+        const data = await res.json();
+        const product = data.data.find((item:Product)=> item.productId === Number(id))
+        setProducts(product || null)
+      }catch (error){
+        console.error("Error fetching product:", error)
+      }finally{
+        setLoading(false)
+      }
+    };
+    if(id){
+      fetchProduct()
+    }
+  },[id])
+
+   if (loading) return <p>Loading...</p>;
+  if (!id) return <p>Product not found</p>;
+
+  const handleAddToCart= ()=>{
+    console.log ("add to cart")
+  }
   return (
-    <div>P</div>
+     <div className="container my-5">
+      <div className="card shadow-lg border-0 rounded-4 p-4">
+        <div className="row g-4 align-items-center">
+          {/* Product Image */}
+          <div className="col-md-5 text-center">
+            <img
+              src={products?.productImageUrl}
+              alt={products?.productName}
+              width={400}
+              height={400}
+              className="rounded-4"
+            />
+          </div>
+
+          {/* Product Info */}
+          <div className="col-md-7">
+            <h2 className="fw-bold">{products?.productName}</h2>
+            <p className="text-muted">Category: {products?.categoryName}</p>
+            <h4 className="text-success fw-bold">${products?.productPrice}</h4>
+            <p className="mt-3">{products?.productDescription}</p>
+
+            {/* Buttons */}
+            <div className="d-flex gap-3 mt-4">
+              <button
+                className="btn btn-danger rounded-pill px-4"
+                onClick={handleAddToCart}
+              >
+                🛒 Add to Cart
+              </button>
+
+              <button
+                className="btn btn-outline-primary rounded-pill px-4"
+                // onClick={() => router.push("/")}
+                
+              >
+                🔍 Check More Items
+              </button>
+
+              <button
+                className="btn btn-success rounded-pill px-4"
+                // onClick={() => router.push("/checkout")}
+              >
+                ✅ Checkout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

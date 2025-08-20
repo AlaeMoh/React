@@ -58,7 +58,7 @@ export default function Page() {
         {products.map((product) => (
           <div className="col-md-3 col-sm-6 mb-4" key={product.productId}>
             <div className="card h-100 d-flex">
-              <Link href={"/product/id"}>
+              <Link href={`product/${product.productId}`}>
               <img src={product.productImageUrl} alt="" className='imagsource'/>
               </Link>
                

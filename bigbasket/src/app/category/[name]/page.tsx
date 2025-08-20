@@ -30,10 +30,8 @@ export default function Page({params}:{params:Promise< {name:string}>}) {
 const res = await fetch("/api/products", { cache: "no-store" });
 const data = await res.json();
 console.log("API data:", data);
-// If db.json has { "products": [...] }
 const productList = data.data;
 
-// Now filter
 const filteredData = productList.filter(
   (product: Product) =>
     product.categoryName.toLowerCase() === name.toLowerCase()
@@ -56,7 +54,7 @@ setProducts(filteredData);
           <div className="toggle pb-5">
             <Toggles></Toggles>
           </div>
-      <h1 className="title mb-4 text-capitalize text-center pb-3" >{name} that might intresst you</h1>
+      <h1 className="title mb-4 text-capitalize text-center pb-3" >{name} that might intrest you</h1>
       <div className="row">
         {products.length === 0 ? (
           <p>No products found.</p>

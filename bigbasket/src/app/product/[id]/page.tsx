@@ -2,7 +2,7 @@
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 // import Image from "next/image";
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 
 
@@ -22,7 +22,7 @@ import React, { useEffect, useState } from 'react'
 
 export default function Page() {
   const params = useParams();
-  // const router = useRouter()
+  const router = useRouter()
   const {id} = params;
   const [products , setProducts] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true)
@@ -71,8 +71,10 @@ export default function Page() {
           <div className="col-md-7">
             <h2 className="fw-bold">{products?.productName}</h2>
             <p className="text-muted">Category: {products?.categoryName}</p>
+            <p className="card-text">{products?.productDescription}</p>
+            <p className="card-text">{products?.deliveryTimeSpan}</p>
             <h4 className="text-success fw-bold">${products?.productPrice}</h4>
-            <p className="mt-3">{products?.productDescription}</p>
+          
 
             {/* Buttons */}
             <div className="d-flex gap-3 mt-4">
@@ -84,8 +86,8 @@ export default function Page() {
               </button>
 
               <button
-                className="btn btn-outline-primary rounded-pill px-4"
-                // onClick={() => router.push("/")}
+                className="btn btn-outline-success rounded-pill px-4"
+                onClick={()=>router.push("/")}
                 
               >
                 🔍 Check More Items

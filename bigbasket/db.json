@@ -1,4 +1,5 @@
-{ "products":[
+{
+  "products": [
     {
       "productId": 2857,
       "productSku": "NNG",
@@ -2115,7 +2116,7 @@
       "createdDate": "2024-11-24T20:34:40.35",
       "deliveryTimeSpan": "2 years",
       "categoryId": 66,
-      "productImageUrl":"https://i.ebayimg.com/images/g/DPYAAOSwLOdn9hyU/s-l1600.webp",
+      "productImageUrl": "https://i.ebayimg.com/images/g/DPYAAOSwLOdn9hyU/s-l1600.webp",
       "categoryName": "groceries"
     },
     {
@@ -2467,7 +2468,7 @@
       "categoryId": 56,
       "productImageUrl": "https://i1.adis.ws/i/jpl/go_478429_a?w=638&h=638&&fmt=webp&fmt=webp",
       "categoryName": "Snacks",
-      "productDescription":"Likit Snaks Apple & Cinnamon | Naylors"
+      "productDescription": "Likit Snaks Apple & Cinnamon | Naylors"
     },
     {
       "productId": 3848,
@@ -2637,6 +2638,20 @@
       "categoryId": 55,
       "productImageUrl": "https://www.upcountrystorehouse.com/media/catalog/product/cache/8be6c4fbb82d87f9571a1aa69aea0161/5/0/506111_16.png",
       "categoryName": "groceries"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "islam",
+      "email": "islam@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": 2,
+      "name": "Adam",
+      "email": "Adam@user.com",
+      "password": "1234567"
     }
   ]
 }

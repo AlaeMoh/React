@@ -3,6 +3,8 @@ import React, { use, useEffect, useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import Toggles from '../../toggles/page'
 import "../../styles/category.css"
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
     interface Product{
        productId: number,
@@ -22,6 +24,7 @@ export default function Page({params}:{params:Promise< {name:string}>}) {
      const { name } = use(params);
     const [products, setProducts]= useState<Product[]>([])
     const [loading, setLoading]= useState(true)
+    const router= useRouter()
 
     useEffect(() => {
   const fetchProduct = async () => {
@@ -62,15 +65,18 @@ setProducts(filteredData);
           products.map((product) => (
             <div key={product.productId} className="col-md-3 mb-4">
               <div className="card h-100 shadow-sm">
-                <img 
+                <Link href={`http://localhost:3000/product/${product.productId}`}>
+                   <img 
                   src={product.productImageUrl}
                   className="imagsource"
                   alt={product.productName}
                 />
+                </Link>
+   
                 <div className="card-body">
                   <h5 className="card-title">{product.productName}</h5>
                   <p className="card-text">Price: ₹{product.productPrice}</p>
-                  <button className='btn btn-success'> Check product</button>
+                  <button className='btn btn-success' onClick={()=>{router.push(`http://localhost:3000/product/${product.productId}`)}}> Check product</button>
                 </div>
               </div>
             </div>

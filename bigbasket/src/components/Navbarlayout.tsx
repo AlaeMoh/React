@@ -50,7 +50,7 @@ export default function Navbarlayout() {
             />
             <Button variant="outline-success">Search</Button>
           </Form>
-          <Nav.Link href="#action1" className='text-dark ps-2 pe-2'>Sign up / login</Nav.Link>
+          <Nav.Link href="/signup" className='text-dark ps-2 pe-2'>Sign up / login</Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

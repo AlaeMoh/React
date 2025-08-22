@@ -26,6 +26,7 @@ export default function Page() {
         });
         const result = await res.json()
         if(result.success){
+          localStorage.setItem("user", JSON.stringify(result.user))
             setMessage("✅ Account created successfully!");
             setFormData({ name: "", email: "", password: "" });
             setTimeout(()=>{

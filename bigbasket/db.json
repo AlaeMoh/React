@@ -2652,6 +2652,24 @@
       "name": "Adam",
       "email": "Adam@user.com",
       "password": "1234567"
+    },
+    {
+      "id": 3,
+      "name": "Fonkie",
+      "email": "f@gmail.com",
+      "password": "123456789"
+    },
+    {
+      "id": 4,
+      "name": "Ihab",
+      "email": "Ihab@gmail.com",
+      "password": "123456789"
+    },
+    {
+      "id": 5,
+      "name": "alaa",
+      "email": "alae.muhammad@gmail.com",
+      "password": "123456"
     }
   ]
 }

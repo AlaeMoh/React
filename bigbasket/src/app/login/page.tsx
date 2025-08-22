@@ -1,6 +1,7 @@
 "use client"
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import { json } from 'stream/consumers'
 
 export default function Page() {
     const router = useRouter()
@@ -19,13 +20,13 @@ export default function Page() {
         try{
             const res = await fetch("http://localhost:3000/api/users");
             const users= await res.json();
-            console.log("📌 Parsed JSON:", users);
             const user = users.data.find((u:any)=>u.email === formData.email && u.password === formData.password
            
         ) 
         
             if(user){
             setMessage(`✅ Welcome back, ${user.name}!`);
+            localStorage.setItem("user", JSON.stringify(user))
             setTimeout(()=>{
                 router.push("/")
             })

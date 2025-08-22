@@ -45,6 +45,9 @@ export default function Page() {
      if (loading) {
     return <p className="text-center mt-5">Loading products...</p>;
   }
+
+  
+  
   return (
      <div className="container my-5">
       <div className="toggles">
@@ -54,7 +57,7 @@ export default function Page() {
         <Carousel></Carousel>
        </div>
       <h1 className=" head mb-4 text-danger text-center">BigBasket Products</h1>
-      <div className="row">
+      {/* <div className="row">
         {products.map((product) => (
           <div className="col-md-3 col-sm-6 mb-4" key={product.productId}>
             <div className="card h-100 d-flex">
@@ -70,7 +73,37 @@ export default function Page() {
             </div>
           </div>
         ))}
+      </div> */}
+       <div className="container my-5">
+      <h2 className="text-center mb-4 fw-bold">✨ Our Products ✨</h2>
+
+      <div className="row">
+        {products.map((product) => (
+          <div className="col-md-3 col-sm-6 mb-4" key={product.productId}>
+            <div className="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+              {/* Clickable Image */}
+              <Link href={`/product/${product.productId}`}>
+                <img
+                  src={product.productImageUrl}
+                  alt={product.productName}
+                  className="card-img-top img-fluid"
+                  style={{ height: "200px", objectFit: "cover" }}
+                />
+              </Link>
+
+              {/* Card Body */}
+              <div className="card-body text-center">
+                <h5 className="card-title text-truncate">{product.productName}</h5>
+                <p className="card-text text-muted">💲 {product.productPrice}</p>
+                <button className="btn btn-success w-100 rounded-pill">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
+    </div>
     </div>
   )
 }

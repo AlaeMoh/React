@@ -95,7 +95,7 @@ export default function Page() {
 
               <button
                 className="btn btn-success rounded-pill px-4"
-                // onClick={() => router.push("/checkout")}
+                 onClick={()=>router.push("/checkout")}
               >
                 ✅ Checkout
               </button>

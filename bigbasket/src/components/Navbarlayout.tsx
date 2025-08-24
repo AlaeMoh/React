@@ -39,7 +39,7 @@ export default function Navbarlayout() {
             navbarScroll
           >
             <Nav.Link href="/home">Home</Nav.Link>
-            <Nav.Link href="#action2">Cart</Nav.Link>
+            <Nav.Link href="/cart">Cart</Nav.Link>
             <NavDropdown title="Categories" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/category/groceries">groceries</NavDropdown.Item>
               <NavDropdown.Item href="/category/Electronics">
@@ -81,7 +81,7 @@ export default function Navbarlayout() {
             navbarScroll
           >
             <Nav.Link href="/home">Home</Nav.Link>
-            <Nav.Link href="#action2">Cart</Nav.Link>
+            <Nav.Link href="/cart">Cart</Nav.Link>
             <NavDropdown title="Categories" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/category/groceries">groceries</NavDropdown.Item>
               <NavDropdown.Item href="/category/Electronics">

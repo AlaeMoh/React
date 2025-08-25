@@ -83,7 +83,7 @@ export default function Page() {
       <h1 className="mb-4">🛍 Your Cart</h1>
       <div className="row">
         {cart.map((item) => (
-          <div className="col-md-4 mb-4" key={item.id}>
+          <div className="col-md-4 mb-4" key={item.productId}>
             <div className="card h-100 shadow-sm">
               <img
                 src={item.productImageUrl}
@@ -94,7 +94,7 @@ export default function Page() {
                 <h5 className="card-title">{item.productName}</h5>
                 <p className="card-text">Price: ${item.productPrice}</p>
                 <p className="card-text">Quantity: {item.quantity}</p>
-                <Link href={`/cart/${item.id}`} className="btn btn-primary w-100">
+                <Link href={`cart/${item.productId}`} className="btn btn-primary w-100">
                   Manage Item
                 </Link>
               </div>
@@ -111,14 +111,14 @@ export default function Page() {
     </div>
       )}
 
-      {cart.length > 0 && (
+      {/* {cart.length > 0 && (
         <div className="card p-4 shadow-lg border-0 rounded-4 mt-4">
           <h4 className="text-end">
             Total: <span className="text-success">${total.toFixed(2)}</span>
           </h4>
           <button className="btn btn-success w-100 mt-3">✅ Checkout</button>
         </div>
-      )}
+      )} */}
     </div>
   )
 }

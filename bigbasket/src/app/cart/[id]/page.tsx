@@ -2,26 +2,42 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 interface CartItem {
-  id: number;
-  productName: string;
-  productImageUrl: string;
-  productPrice: number;
-  quantity: number;
+       id:number,
+       productId: number,
+       productSku: string,
+       productName: string,
+       productPrice: number,
+       productShortName: string,
+       productDescription: string,
+       createdDate: string,
+       deliveryTimeSpan: string,
+       categoryId: number,
+       productImageUrl: string,
+       categoryName: string,
+       quantity: number
 }
 
 export default function Page() {
-  const { id } = useParams();
+  const params = useParams();
+  const { id } = params;
   const router = useRouter();
   const [item, setItem] = useState<CartItem | null>(null);
 
   useEffect(() => {
     const fetchItem = async () => {
       try {
-        const res = await fetch(`/api/cart/${id}`);
+        const res = await fetch(`http://localhost:3001/cart/?productId=${id}`);
         const data = await res.json();
-        setItem(data);
+        console.log(data)
+        if (data.length > 0) {
+        setItem(data[0]); 
+      } else {
+        setItem(null);
+      }
       } catch (err) {
         console.error("❌ Error fetching cart item:", err);
       }

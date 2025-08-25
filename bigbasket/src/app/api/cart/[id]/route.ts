@@ -1,30 +1,8 @@
-
-
 import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
 
 const dbPath = path.join(process.cwd(), "db.json");
-
-// 🟢 GET → fetch single item
-export async function GET(req: Request, { params }: { params: { id: string } }) {
-  try {
-    const { id } = params;
-    const file = await fs.readFile(dbPath, "utf-8");
-    const data = JSON.parse(file);
-
-    const cart = data.cart || [];
-    const item = cart.find((p: any) => p.productId == id);
-
-    if (!item) {
-      return NextResponse.json({ error: "Item not found" }, { status: 404 });
-    }
-
-    return NextResponse.json({ item });
-  } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch item" }, { status: 500 });
-  }
-}
 
 // 🟢 PUT → update quantity
 export async function PUT(req: Request, { params }: { params: { id: string } }) {
@@ -41,12 +19,13 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
       return NextResponse.json({ error: "Item not found" }, { status: 404 });
     }
 
+    // update quantity
     cart[itemIndex].quantity = body.quantity;
 
     data.cart = cart;
     await fs.writeFile(dbPath, JSON.stringify(data, null, 2));
 
-    return NextResponse.json({ success: true, item: cart[itemIndex] });
+    return NextResponse.json({ success: true, cart });
   } catch (error) {
     return NextResponse.json({ error: "Failed to update item" }, { status: 500 });
   }
@@ -65,7 +44,7 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
     data.cart = cart;
     await fs.writeFile(dbPath, JSON.stringify(data, null, 2));
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, cart });
   } catch (error) {
     return NextResponse.json({ error: "Failed to remove item" }, { status: 500 });
   }

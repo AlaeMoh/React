@@ -52,7 +52,7 @@ export default function Navbarlayout() {
                 Snacks
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#">
+            <Nav.Link href="/orders">
               Orders
             </Nav.Link>
             
@@ -94,7 +94,7 @@ export default function Navbarlayout() {
                 Snacks
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#">
+            <Nav.Link href="/ordes">
               Orders
             </Nav.Link>
             

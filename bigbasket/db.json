@@ -2684,7 +2684,8 @@
       "deliveryTimeSpan": "1-2 Days",
       "categoryId": 55,
       "productImageUrl": "https://incredideals.co/cdn/shop/files/MXLJ3ref_VW_34FR_watch-case-42-aluminum-jetblack-nc-s10_VW_34FR_watch-face-42-aluminum-jetblack-s10_VW_34FR_df2624fb-22ec-48f0-ada0-cf07ede870be.jpg?v=1738363875",
-      "categoryName": "accessories"
+      "categoryName": "accessories",
+      "quantity": 2
     },
     {
       "productId": 3548,
@@ -2699,6 +2700,52 @@
       "productPrice": 60000,
       "productImageUrl": "https://images.unsplash.com/photo-1619976396248-56d05beb2919?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODd8fHdhdGNoc3xlbnwwfHwwfHx8MA%3D%3D",
       "quantity": 1
+    }
+  ],
+  "orders": [
+    {
+      "customer": {
+        "name": "islam",
+        "address": "12223 street",
+        "city": "alex",
+        "postalCode": "123",
+        "cardNumber": "123333333333333333",
+        "expiry": "25/25",
+        "cvv": "123"
+      },
+      "items": [
+        {
+          "productId": 2857,
+          "productSku": "NNG",
+          "productName": "Watch",
+          "productPrice": 998,
+          "productShortName": "Watch1 edit",
+          "productDescription": "Watchnjhuyu",
+          "createdDate": "2024-12-05T14:36:17.93",
+          "deliveryTimeSpan": "1-2 Days",
+          "categoryId": 55,
+          "productImageUrl": "https://incredideals.co/cdn/shop/files/MXLJ3ref_VW_34FR_watch-case-42-aluminum-jetblack-nc-s10_VW_34FR_watch-face-42-aluminum-jetblack-s10_VW_34FR_df2624fb-22ec-48f0-ada0-cf07ede870be.jpg?v=1738363875",
+          "categoryName": "accessories",
+          "quantity": 2
+        },
+        {
+          "productId": 3548,
+          "productName": "banana",
+          "productPrice": 40,
+          "productImageUrl": "https://www.biolaboratorium.com/cdn/shop/products/59162.jpg?v=1673557349",
+          "quantity": 1
+        },
+        {
+          "productId": 2775,
+          "productName": "changedaaa",
+          "productPrice": 60000,
+          "productImageUrl": "https://images.unsplash.com/photo-1619976396248-56d05beb2919?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODd8fHdhdGNoc3xlbnwwfHwwfHx8MA%3D%3D",
+          "quantity": 1
+        }
+      ],
+      "total": 62036,
+      "createdAt": "2025-08-25T12:04:17.359Z",
+      "id": 1
     }
   ]
 }

@@ -1,0 +1,15 @@
+:root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --mainColor: #b73dae;
+
+  }
+
+  .custom-navbar{
+    background-color: rgb(66, 66, 66, 0.5);
+    
+  }
+
+  .logo{
+    color: var(--mainColor);
+  }

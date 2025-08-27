@@ -11,9 +11,9 @@ height: 90vh
     background: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.6), transparent);
 }
 
-        .bg-purple {
+ .bg-purple {
           background-color: #6f42c1 !important;
         }
-        .object-fit-cover {
+ .object-fit-cover {
           object-fit: cover;
-        }
+ }

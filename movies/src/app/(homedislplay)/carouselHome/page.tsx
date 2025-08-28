@@ -1,11 +1,11 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import  '../styles/carousel.css'
+import  '../../styles/carousel.css'
 import Carousel from 'react-bootstrap/Carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { fetchPopularMovies, fetchTrendingMovies, getImageUrl } from '../services/api';
+import { fetchPopularMovies, fetchTrendingMovies, getImageUrl } from '../../services/api';
 
 
 type Movies = {

@@ -13,7 +13,7 @@ export const fetchTrendingMovies= async ()=>{
 
 export const fetchPopularMovies= async ()=>{
       try{
-        const res = await fetch(`${BASE_URL}/movie/popular/api_key=${API_KEY}&language=en-US&page=1`)
+        const res = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
         const data = await res.json();
         return data.results;
       }catch(err){
@@ -23,7 +23,7 @@ export const fetchPopularMovies= async ()=>{
 
 export const fetchTopRatedMovies= async ()=>{
       try{
-        const res = await fetch(`${BASE_URL}/movie/toprated/api_key=${API_KEY}&language=en-US&page=1`)
+        const res = await fetch(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`)
         const data = await res.json();
         return data.results;
       }catch(err){
@@ -35,6 +35,7 @@ export const fetchTopRatedMovies= async ()=>{
 export const fetchMoviesByGenre= async (genreID:any)=>{
       try{
         const res = await fetch(`${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=${genreID}&page=1`)
+        // /movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc'
         const data = await res.json();
         return data.results;
       }catch(err){
@@ -83,6 +84,19 @@ export const searchMovies= async (query:any)=>{
       }
 
       
+}
+
+
+export const getUpcomingMovies= async ()=>{
+  try{
+    const res =await fetch(`${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`)
+    const data = await res.json();
+    return data.results;
+
+  }catch(err){
+         console.error("Error fetching products:", err);
+         return [];
+  }
 }
 
 export const getImageUrl = (path: string | null, size = "original") => {

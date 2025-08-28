@@ -22,10 +22,10 @@ export default function Navbarlayout() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1" className='text-white'>Home</Nav.Link>
-            <Nav.Link href="#action2" className='text-white'>Trending</Nav.Link>
-            <Nav.Link href="#" className='text-white'>Popular</Nav.Link>
-            <Nav.Link href="#" className='text-white'>Top rated</Nav.Link>
+            <Nav.Link href="/" className='text-white'>Home</Nav.Link>
+            <Nav.Link href="trending" className='text-white'>Trending</Nav.Link>
+            <Nav.Link href="popular" className='text-white'>Popular</Nav.Link>
+            <Nav.Link href="toprated" className='text-white'>Top rated</Nav.Link>
           </Nav>
           <Form className="d-flex position-relative">
             <Form.Control

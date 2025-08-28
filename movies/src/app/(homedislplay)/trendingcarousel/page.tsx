@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react'
-import { fetchTrendingMovies, getImageUrl } from '../services/api'
+import { fetchTrendingMovies, getImageUrl } from '../../services/api'
 import { Carousel } from 'react-bootstrap'
 
     type Movies = {
@@ -41,9 +41,12 @@ export default function Page() {
         fetchMovieData()
     },[])
 
+        if(loading){
+         return <p className="text-center mt-5">Loading products...</p>;
+    }
 
   return ( <div className="conatiner">
-    <h3 className='text-center text-white pb-3'><i className="bi bi-film me-2"></i><i className="bi bi ticket"></i>Trending Movies</h3>
+    <h3 className='text-center text-white pb-3'><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="40px" fill="#ffffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg> Trending Movies</h3>
     <div className="position-relative">
   
       {/* Left Button */}

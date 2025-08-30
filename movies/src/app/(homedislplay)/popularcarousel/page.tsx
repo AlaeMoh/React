@@ -1,6 +1,8 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react'
 import { fetchPopularMovies, getImageUrl } from '../../services/api'
+import Link from 'next/link'
+import "../../styles/home.css"
 
 type Movies = {
   id: number,
@@ -66,14 +68,17 @@ export default function Page() {
            className="d-flex overflow-hidden"
            style={{ scrollBehavior: "smooth" }}
          >
-           {popularMovies.map((movie: any) => (
-             <div key={movie.id} className="me-3" style={{ minWidth: "160px" }}>
-               <img
+           {popularMovies.map((movie: Movies) => (
+             <div key={movie.id} className=" me-3" style={{ minWidth: "160px" }}>
+              <Link href={`/moviedetails/${movie.id}`}>
+                 <img
                  src={getImageUrl(movie.poster_path, "w300")}
                  alt={movie.title}
-                 className="img-fluid rounded"
+                 className="pictures img-fluid rounded"
                />
-               <p className="text-center small mt-2">{movie.title}</p>
+               </Link>
+
+               <p className="text-center small mt-2 text-white">{movie.title}</p>
              </div>
            ))}
          </div>
@@ -91,3 +96,4 @@ export default function Page() {
    
   )
 }
+ 

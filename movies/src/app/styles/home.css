@@ -1,0 +1,14 @@
+.pictures{
+    
+transition: transform 0.3s ease;
+}
+.pictures:hover{
+     transform: scale(1.2);
+}
+
+.toggle{
+    outline:#b73dae;
+    color: aliceblue;
+    width:130px
+    
+}

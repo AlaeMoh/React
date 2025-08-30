@@ -1,6 +1,9 @@
 "use client"
 import { fetchTopRatedMovies, getImageUrl } from '@/app/services/api';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+import "../../styles/home.css"
+import Toggles from "../toggles/page"
 
 type Movies = {
   id: number,
@@ -44,7 +47,12 @@ if(loading){
    }
   return (
      <div className="container my-5">
-      {/* Heading */}
+      <div className="row">
+     <div className="col-2">
+      <Toggles></Toggles>
+     </div>
+     <div className="col-10">
+         {/* Heading */}
       <h2 className="mb-4 text-center text-white">
         <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#FFFFFF"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg> 
           TopRated Movies
@@ -54,13 +62,15 @@ if(loading){
       <div className="row g-4">
         {topRatedMovies.map((movie) => (
           <div key={movie.id} className="col-6 col-md-4 col-lg-2">
-            <div className="card h-100 shadow-sm border-0 rounded-4">
+            <div className="pictures card h-100 shadow-sm border-0 rounded-4">
               {/* Poster */}
-              <img
-                src={getImageUrl(movie.poster_path, "w300")}
-                alt={movie.title}
-                className="card-img-top rounded-top-4"
-              />
+              <Link href={`/moviedetails/${movie.id}`}>
+                 <img
+                 src={getImageUrl(movie.poster_path, "w300")}
+                 alt={movie.title}
+                 className="img-fluid rounded"
+               />
+               </Link>
 
               {/* Card Body */}
               <div className="card-body p-2 bg-dark text-white rounded-4 rounded-top-0">
@@ -76,6 +86,10 @@ if(loading){
           </div>
         ))}
       </div>
+      </div>
+      </div>
+
+
     </div>
   )
 }

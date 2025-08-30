@@ -36,7 +36,7 @@ export default function Page() {
       try{
         const trending = await fetchTrendingMovies();
          setMovies(trending.slice(0, 3));
-        console.log(trending.slice(0, 3))
+        // console.log(trending.slice(0, 3))
       
     }catch(error){
      console.error("Error fetching products:", error);

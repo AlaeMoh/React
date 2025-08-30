@@ -2,6 +2,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { fetchTrendingMovies, getImageUrl } from '../../services/api'
 import { Carousel } from 'react-bootstrap'
+import Link from 'next/link'
+import "../../styles/home.css"
 
     type Movies = {
   id: number,
@@ -64,14 +66,16 @@ export default function Page() {
         className="d-flex overflow-hidden"
         style={{ scrollBehavior: "smooth" }}
       >
-        {trendingMovies.map((movie: any) => (
+        {trendingMovies.map((movie: Movies) => (
           <div key={movie.id} className="me-3" style={{ minWidth: "160px" }}>
-            <img
-              src={getImageUrl(movie.poster_path, "w300")}
-              alt={movie.title}
-              className="img-fluid rounded"
-            />
-            <p className="text-center small mt-2">{movie.title}</p>
+              <Link href={`/moviedetails/${movie.id}`}>
+                 <img
+                 src={getImageUrl(movie.poster_path, "w300")}
+                 alt={movie.title}
+                 className="pictures img-fluid rounded"
+               />
+               </Link>
+            <p className="text-center text-white small mt-2">{movie.title}</p>
           </div>
         ))}
       </div>

@@ -1,6 +1,8 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react'
 import { getImageUrl, getUpcomingMovies } from '../../services/api';
+import Link from 'next/link';
+import "../../styles/home.css"
 
 type Movies = {
   id: number,
@@ -32,7 +34,7 @@ export default function Page() {
    const fetchMovieData= async ()=>{
      try{
        const upComingMovies= await getUpcomingMovies()
-       console.log(upComingMovies)
+      //  console.log(upComingMovies)
       setMovies(upComingMovies)
      }catch(error){
          console.error("Error fetching products:", error);
@@ -68,14 +70,16 @@ export default function Page() {
                className="d-flex overflow-hidden"
                style={{ scrollBehavior: "smooth" }}
              >
-               {upComing.map((movie: any) => (
+               {upComing.map((movie: Movies) => (
                  <div key={movie.id} className="me-3" style={{ minWidth: "160px" }}>
-                   <img
-                     src={getImageUrl(movie.poster_path, "w300")}
-                     alt={movie.title}
-                     className="img-fluid rounded"
-                   />
-                   <p className="text-center small mt-2">{movie.title}</p>
+              <Link href={`/moviedetails/${movie.id}`}>
+                 <img
+                 src={getImageUrl(movie.poster_path, "w300")}
+                 alt={movie.title}
+                 className="pictures img-fluid rounded"
+               />
+               </Link>
+                   <p className="text-center text-white small mt-2">{movie.title}</p>
                  </div>
                ))}
              </div>

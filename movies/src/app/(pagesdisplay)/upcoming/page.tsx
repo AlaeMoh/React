@@ -1,6 +1,8 @@
 "use client"
 import {  fetchTrendingMovies, getImageUrl, getUpcomingMovies } from '@/app/services/api';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+import "../../styles/home.css"
 
 type Movies = {
   id: number,
@@ -54,13 +56,15 @@ if(loading){
       <div className="row g-4">
         {upComingMovies.map((movie) => (
           <div key={movie.id} className="col-6 col-md-4 col-lg-2">
-            <div className="card h-100 shadow-sm border-0 rounded-4">
+            <div className="pictures card h-100 shadow-sm border-0 rounded-4">
               {/* Poster */}
-              <img
-                src={getImageUrl(movie.poster_path, "w300")}
-                alt={movie.title}
-                className="card-img-top rounded-top-4"
-              />
+              <Link href={`/moviedetails/${movie.id}`}>
+                 <img
+                 src={getImageUrl(movie.poster_path, "w300")}
+                 alt={movie.title}
+                 className="img-fluid rounded"
+               />
+               </Link>
 
               {/* Card Body */}
               <div className="card-body p-2 bg-dark text-white rounded-4 rounded-top-0">

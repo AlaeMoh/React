@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import  '../styles/navbarstyle.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
@@ -9,12 +9,24 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from 'next/navigation';
 
 export default function Navbarlayout() {
+  const router = useRouter()
+  const [query, setQuery] =  useState("");
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>)=>{
+    
+ if (e.key === "Enter") {
+    e.preventDefault(); 
+    if (query.trim() !== "") {
+      router.push(`/search?query=${encodeURIComponent(query)}`);
+    }
+  }
+  }
   return (
      <Navbar expand="lg" className="custom-navbar">
       <Container fluid>
-        <Navbar.Brand href="#" className='px-5'><span className="logo">Cinema</span><span className='text-white'>Mix</span></Navbar.Brand>
+        <Navbar.Brand className='px-5'><span className="logo">Cinema</span><span className='text-white'>Mix</span></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll ">
           <Nav
@@ -23,9 +35,9 @@ export default function Navbarlayout() {
             navbarScroll
           >
             <Nav.Link href="/" className='text-white'>Home</Nav.Link>
-            <Nav.Link href="trending" className='text-white'>Trending</Nav.Link>
-            <Nav.Link href="popular" className='text-white'>Popular</Nav.Link>
-            <Nav.Link href="toprated" className='text-white'>Top rated</Nav.Link>
+            <Nav.Link href="/trending" className='text-white'>Trending</Nav.Link>
+            <Nav.Link href="/popular" className='text-white'>Popular</Nav.Link>
+            <Nav.Link href="/toprated" className='text-white'>Top rated</Nav.Link>
           </Nav>
           <Form className="d-flex position-relative">
             <Form.Control
@@ -33,8 +45,11 @@ export default function Navbarlayout() {
               placeholder="Search"
               className="me-2 "
               aria-label="Search"
+              value={query}
+              onChange={(e)=>{setQuery(e.target.value)}}
+              onKeyDown={handleSearch}
             />
-            <Button variant="outline" className='text-white position-absolute top-50 end-0 translate-middle-y'><FontAwesomeIcon icon={faSearch} className='text-dark' /></Button>
+            <Button variant="outline" className='text-white position-absolute top-50 end-0 translate-middle-y' onClick={()=>{query.trim() !== "" && router.push(`/search?query=${encodeURIComponent(query)}`)}}><FontAwesomeIcon icon={faSearch} className='text-dark' /></Button>
           </Form>
         </Navbar.Collapse>
       </Container>

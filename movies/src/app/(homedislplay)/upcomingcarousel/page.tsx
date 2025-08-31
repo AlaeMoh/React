@@ -3,19 +3,20 @@ import React, { useEffect, useRef, useState } from 'react'
 import { getImageUrl, getUpcomingMovies } from '../../services/api';
 import Link from 'next/link';
 import "../../styles/home.css"
-
+import { useRouter } from 'next/navigation'
 type Movies = {
   id: number,
   title: string,
   poster_path: string,
   vote_average: number,
   vote_count: number,
+   release_date: string,
   }
 
 export default function Page() {
   const [upComing, setMovies] = useState<Movies[]>([])
  const [loading, setloading] = useState(true);
-        
+     const router= useRouter()
         
    const rowRef = useRef<HTMLDivElement>(null);
             
@@ -46,6 +47,11 @@ export default function Page() {
     fetchMovieData()
      },[])
         
+
+
+   const handleSelect = (movieId: string) => {
+    router.push(`/moviedetails/${movieId}`); 
+  };
      if(loading){
      return <p className="text-center mt-5">Loading products...</p>;
     }
@@ -71,16 +77,27 @@ export default function Page() {
                style={{ scrollBehavior: "smooth" }}
              >
                {upComing.map((movie: Movies) => (
-                 <div key={movie.id} className="me-3" style={{ minWidth: "160px" }}>
-              <Link href={`/moviedetails/${movie.id}`}>
-                 <img
-                 src={getImageUrl(movie.poster_path, "w300")}
-                 alt={movie.title}
-                 className="pictures img-fluid rounded"
-               />
-               </Link>
-                   <p className="text-center text-white small mt-2">{movie.title}</p>
-                 </div>
+            <div key={movie.id} className="me-3" style={{ minWidth: "160px" }}>
+          <div className="pictures position-relative overflow-hidden rounded">
+             <Link href={`/moviedetails/${movie.id}`}>
+              <img
+              src={getImageUrl(movie.poster_path, "w300")}
+                alt={movie.title}
+              className="img-fluid rounded w-100"
+         />
+          </Link>
+
+                 {/* Hover Overlay */}
+              <div className="overlay-details d-flex flex-column justify-content-center align-items-center text-center text-white p-2">
+            <h6 className="mb-1">{movie.title}</h6>
+          <p className="mb-0">⭐ {movie.vote_average.toFixed(1)}</p>
+            <small className="text-muted">{movie.release_date}</small>
+            <button className='dbuttn btn' onClick={()=>handleSelect(movie.id.toString())}>View Details</button>
+                </div>
+              </div>
+
+            
+         </div>
                ))}
              </div>
        

@@ -35,7 +35,7 @@ export default function Page() {
     const fetchMovieData= async ()=>{
       try{
         const trending = await fetchTrendingMovies();
-         setMovies(trending.slice(0, 3));
+         setMovies(trending.slice(0, 5));
         // console.log(trending.slice(0, 3))
       
     }catch(error){
@@ -53,13 +53,13 @@ export default function Page() {
     return <p className="text-center mt-5">Loading products...</p>;
   }
   return ( 
-    <Carousel >
+    <Carousel className='home-carousel pb-5'>
     {trendingMovies.map((movie)=>(
     <Carousel.Item key={movie.id}
        
   className="position-relative text-white"
-  style={{ height: "90vh" }}>
-      <img src={getImageUrl(movie.poster_path, "w500")} alt="" className="w-100 h-70 object-fit-cover position-absolute top-0 start-0"/>
+  style={{ height: "100vh" }}>
+      <img src={getImageUrl(movie.poster_path, "w500")} alt="" className="w-100 h-100 object-fit-cover position-absolute top-0 start-0"/>
               <div
               className="position-absolute top-0 start-0 w-100 h-100"
               style={{
@@ -67,8 +67,9 @@ export default function Page() {
                   "linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.6), transparent)",
               }}
             ></div>
+            
         <Carousel.Caption>
-          <div className="position-relative z-1 container h-100 d-flex flex-column justify-content-center mb-4">
+          <div className="position-relative z-1 container h-100 d-flex flex-column justify-content-center mb-4 mt-5">
            <div className="d-flex align-items-center mb-3">
                 <span className="badge bg-purple me-3 px-3 py-2 fw-bold">
                  FEATURED

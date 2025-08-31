@@ -64,7 +64,7 @@ export default function Page({ params }: { params: Promise<{ genreId: string }> 
       return <p className="text-center mt-5">Loading products...</p>;}
     
   return (
-   <div className="container my-5">
+   <div className="container my-5 pt-5">
     <div className="row">
       <div className="col-2">
      <Toggles></Toggles>

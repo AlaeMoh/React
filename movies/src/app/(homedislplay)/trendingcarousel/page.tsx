@@ -4,6 +4,7 @@ import { fetchTrendingMovies, getImageUrl } from '../../services/api'
 import { Carousel } from 'react-bootstrap'
 import Link from 'next/link'
 import "../../styles/home.css"
+import { useRouter } from 'next/navigation'
 
     type Movies = {
   id: number,
@@ -11,11 +12,14 @@ import "../../styles/home.css"
   poster_path: string,
   vote_average: number,
   vote_count: number,
+    release_date: string,
+
   }
 export default function Page() {
     const [trendingMovies, setMovies]= useState<Movies[]>([])
     const [loading, setloading]= useState(true)
- const rowRef = useRef<HTMLDivElement>(null);
+    const rowRef = useRef<HTMLDivElement>(null);
+    const router= useRouter()
 
   const scroll = (direction: "left" | "right") => {
     if (rowRef.current) {
@@ -46,6 +50,9 @@ export default function Page() {
         if(loading){
          return <p className="text-center mt-5">Loading products...</p>;
     }
+     const handleSelect = (movieId: string) => {
+    router.push(`/moviedetails/${movieId}`); 
+  };
 
   return ( <div className="conatiner">
     <h3 className='text-center text-white pb-3'><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="40px" fill="#ffffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg> Trending Movies</h3>
@@ -67,16 +74,27 @@ export default function Page() {
         style={{ scrollBehavior: "smooth" }}
       >
         {trendingMovies.map((movie: Movies) => (
-          <div key={movie.id} className="me-3" style={{ minWidth: "160px" }}>
-              <Link href={`/moviedetails/${movie.id}`}>
-                 <img
-                 src={getImageUrl(movie.poster_path, "w300")}
-                 alt={movie.title}
-                 className="pictures img-fluid rounded"
-               />
-               </Link>
-            <p className="text-center text-white small mt-2">{movie.title}</p>
-          </div>
+            <div key={movie.id} className="me-3" style={{ minWidth: "160px" }}>
+          <div className="pictures position-relative overflow-hidden rounded">
+             <Link href={`/moviedetails/${movie.id}`}>
+              <img
+              src={getImageUrl(movie.poster_path, "w300")}
+                alt={movie.title}
+              className="img-fluid rounded w-100"
+         />
+          </Link>
+
+                 {/* Hover Overlay */}
+              <div className="overlay-details d-flex flex-column justify-content-center align-items-center text-center text-white p-2">
+            <h6 className="mb-1">{movie.title}</h6>
+          <p className="mb-0">⭐ {movie.vote_average.toFixed(1)}</p>
+            <small className="text-muted">{movie.release_date}</small>
+            <button className='dbuttn btn' onClick={()=>handleSelect(movie.id.toString())}>View Details</button>
+                </div>
+              </div>
+
+            
+         </div>
         ))}
       </div>
 

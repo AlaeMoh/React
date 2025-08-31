@@ -59,19 +59,7 @@ export const fetchGenres= async ()=>{
       
 }
 
-export const fetchMoviesByGenreName= async (genreName:string)=>{
-      try{
-        const res = await fetch(`${BASE_URL}/movie?api_key=${API_KEY}include_adult=false&include_video=false&language=en-US&with_genres=${genreName}&page=1&sort_by=popularity.desc`)
-        // /movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc'
-        const data = await res.json();
-        return data.results;
-      }catch(err){
-         console.error("Error fetching products:", err);
-         return [];
-      }
 
-      
-}
 export const fetchMoviesByGenre = async (genreId: number) => {
   try {
     const url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`;
@@ -98,20 +86,7 @@ export const fetchMovieDetails= async (movieId:number)=>{
       
 }
 
-// export const searchMovies= async (query:string)=>{
-//     if (!query) return [];
-//       try{
-//         const res = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=1&&include_adult=false&language=en-US&page=1`)
-//         // search/movie?include_adult=false&language=en-US&page=1'
-//         const data = await res.json();
-//         return data.results;
-//       }catch(err){
-//          console.error("Error fetching products:", err);
-//          return [];
-//       }
 
-      
-// }
 export const searchMovies = async (query: string) => {
   if (!query) return []; 
 

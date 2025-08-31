@@ -1,14 +1,46 @@
-.pictures{
-    
-transition: transform 0.3s ease;
-}
-.pictures:hover{
-     transform: scale(1.2);
-}
 
 .toggle{
     outline:#b73dae;
     color: aliceblue;
     width:130px
     
+}
+
+.pictures {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.pictures:hover {
+  transform: scale(1.1);
+}
+
+.overlay-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 2;
+}
+
+.pictures:hover .overlay-details {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dbuttn{
+    background-color: #b73dae;
 }

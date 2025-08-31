@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { fetchTopRatedMovies, getImageUrl } from '../../services/api';
 import Link from 'next/link';
 import "../../styles/home.css"
+import { useRouter } from 'next/navigation'
 
 type Movies = {
   id: number,
@@ -10,11 +11,13 @@ type Movies = {
   poster_path: string,
   vote_average: number,
   vote_count: number,
+  release_date: string,
   }
 
 export default function Page() {
     const [ratedMovies, setMovies] = useState<Movies[]>([])
     const [loading, setloading] = useState(true);
+     const router= useRouter()
     
     
          const rowRef = useRef<HTMLDivElement>(null);
@@ -45,12 +48,17 @@ export default function Page() {
             fetchMovieData()
         },[])
     
+
+     const handleSelect = (movieId: string) => {
+    router.push(`/moviedetails/${movieId}`); 
+  };
+ 
         if(loading){
              return <p className="text-center mt-5">Loading products...</p>;
         }
   return (
        <div className="conatiner">
-           <h3 className='text-center text-white pb-3'><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#FFFFFF"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg>Popular Movies</h3>
+           <h3 className='text-center text-white pb-3'><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#FFFFFF"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg>Top Rated Movies</h3>
            <div className="position-relative">
          
              {/* Left Button */}
@@ -69,16 +77,27 @@ export default function Page() {
                style={{ scrollBehavior: "smooth" }}
              >
                {ratedMovies.map((movie: Movies) => (
-                 <div key={movie.id} className="me-3" style={{ minWidth: "160px" }}>
-              <Link href={`/moviedetails/${movie.id}`}>
-                 <img
-                 src={getImageUrl(movie.poster_path, "w300")}
-                 alt={movie.title}
-                 className="pictures img-fluid rounded"
-               />
-               </Link>
-                   <p className="text-center text-white small mt-2">{movie.title}</p>
-                 </div>
+            <div key={movie.id} className="me-3" style={{ minWidth: "160px" }}>
+          <div className="pictures position-relative overflow-hidden rounded">
+             <Link href={`/moviedetails/${movie.id}`}>
+              <img
+              src={getImageUrl(movie.poster_path, "w300")}
+                alt={movie.title}
+              className="img-fluid rounded w-100"
+         />
+          </Link>
+
+                 {/* Hover Overlay */}
+              <div className="overlay-details d-flex flex-column justify-content-center align-items-center text-center text-white p-2">
+            <h6 className="mb-1">{movie.title}</h6>
+          <p className="mb-0">⭐ {movie.vote_average.toFixed(1)}</p>
+            <small className="text-muted">{movie.release_date}</small>
+            <button className='dbuttn btn' onClick={()=>handleSelect(movie.id.toString())}>View Details</button>
+                </div>
+              </div>
+
+            
+         </div>
                ))}
              </div>
        

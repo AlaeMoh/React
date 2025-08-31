@@ -46,7 +46,7 @@ if(loading){
  return <p className="text-center mt-5">Loading products...</p>;
    }
   return (
-     <div className="container my-5">
+     <div className="container my-5 pt-5">
        <div className="row">
         <div className="col">
           <Toggles></Toggles>
@@ -73,14 +73,10 @@ if(loading){
                </Link>
 
               {/* Card Body */}
-              <div className="card-body p-2 bg-dark text-white rounded-4 rounded-top-0">
-                <h6 className="card-title text-center text-truncate" title={movie.title}>
+              <div className="card-body p-2 text-white rounded-4 rounded-top-0 bg-dark">
+                <h6 className="card-title text-center text-truncate ">
                   {movie.title}
                 </h6>
-                <p className="text-center text-muted mb-0">
-                  <i className="bi bi-star-fill text-warning me-1"></i>
-                  {movie.vote_average.toFixed(1)}
-                </p>
               </div>
             </div>
           </div>

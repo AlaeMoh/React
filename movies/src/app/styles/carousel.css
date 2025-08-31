@@ -17,3 +17,7 @@ height: 90vh
  .object-fit-cover {
           object-fit: cover;
  }
+
+ .home-carousel {
+  margin-top: 0 !important;
+}

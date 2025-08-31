@@ -5,10 +5,13 @@ import CarouselHome from "../(homedislplay)/carouselHome/page"
 import Trends from "../(homedislplay)/trendingcarousel/page"
 import Popular from "../(homedislplay)/popularcarousel/page"
 import Upcoming from "../(homedislplay)/upcomingcarousel/page"
+import TopRated from "../(homedislplay)/topratedcarousel/page"
+
 export default function Page() {
 
    
   return ( 
+    
       <div className="carousel">
    <CarouselHome></CarouselHome>
    <div className="trends pt-5 pb-5">
@@ -19,6 +22,9 @@ export default function Page() {
    </div>
    <div className="popular pt-5 pb-5">
     <Upcoming></Upcoming>
+   </div>
+      <div className="popular pt-5 pb-5">
+    <TopRated></TopRated>
    </div>
       </div>
 

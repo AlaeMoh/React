@@ -50,7 +50,7 @@ export default function Page({params}:{params: Promise<{movieId:number}>}) {
     if (loading) return <p>Loading...</p>;
      if (!movie) return <p>Movie not found.</p>;
   return (
-        <div className="container my-5">
+        <div className="container my-5 pt-5">
       <div className="row">
         {/* Poster */}
         <div className="col-md-4">

@@ -45,7 +45,7 @@ if(loading){
  return <p className="text-center mt-5">Loading products...</p>;
    }
   return (
-     <div className="container my-5">
+     <div className="container my-5 pt-5">
       <div className="row">
          <div className="col">
           <Toggles></Toggles>

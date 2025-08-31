@@ -24,7 +24,7 @@ export default function Navbarlayout() {
   }
   }
   return (
-     <Navbar expand="lg" className="custom-navbar">
+     <Navbar expand="lg" fixed="top"  className="custom-navbar">
       <Container fluid>
         <Navbar.Brand className='px-5'><span className="logo">Cinema</span><span className='text-white'>Mix</span></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -39,11 +39,11 @@ export default function Navbarlayout() {
             <Nav.Link href="/popular" className='text-white'>Popular</Nav.Link>
             <Nav.Link href="/toprated" className='text-white'>Top rated</Nav.Link>
           </Nav>
-          <Form className="d-flex position-relative">
+          <Form className="d-flex position-relative text-white ">
             <Form.Control
               type="search"
               placeholder="Search"
-              className="me-2 "
+              className="me-2 bg-secondary rounded-4 text-white"
               aria-label="Search"
               value={query}
               onChange={(e)=>{setQuery(e.target.value)}}

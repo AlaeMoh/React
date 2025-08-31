@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbarlayout from "@/app/components/Navbarlayout";
 import "./globals.css";
 import Footerlayout from "./components/Footerlayout";
-
+import Carousel from "./(homedislplay)/carouselHome/page"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} d-flex flex-column min-vh-100`}>
-       <Navbarlayout></Navbarlayout>
+          <Navbarlayout ></Navbarlayout>
         <main className="flex-fill">{children}</main>
         <Footerlayout></Footerlayout>
       </body>

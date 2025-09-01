@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import "../styles/home.css"
+import { useRouter } from 'next/navigation'
 
 type Movies = {
   id: number,
@@ -29,6 +30,7 @@ export default function Page() {
 
     const [movies, setMovies]= useState<Movies[]>([]);
     const [loading, setloading]= useState(true)
+    const router= useRouter()
 
     useEffect(()=>{
         const fetchMovies= async ()=>{
@@ -45,11 +47,15 @@ export default function Page() {
         fetchMovies();
     },[query])
 
+  const handleSelect = (movieId: string) => {
+    router.push(`/moviedetails/${movieId}`); 
+  };
+
 
      if (loading) return <p className="text-center mt-5">Loading...</p>;
   return (
-    <div className="container my-5">
-      <h2 className="mb-4 text-center text-white">
+    <div className="container my-5 pt-5">
+      <h2 className="mb-4 text-center ">
         Search results for: <span className="text-primary">{query}</span>
       </h2>
 
@@ -72,10 +78,12 @@ export default function Page() {
                 />
                 </Link>
 
-                <div className="card-body p-2 bg-dark rounded-4 rounded-top-0 pb-3">
-                  <h6 className="card-title text-center text-truncate text-white">
-                    {movie.title}
-                  </h6>
+            {/* Hover Overlay */}
+              <div className="overlay-details d-flex flex-column justify-content-center align-items-center text-center p-2 text-white">
+            <h6 className="mb-1">{movie.title}</h6>
+          <p className="mb-0">⭐ {movie.vote_average.toFixed(1)}</p>
+            <small className="text-muted">{movie.release_date}</small>
+            <button className='dbuttn btn' onClick={()=>handleSelect(movie.id.toString())}>View Details</button>
                 </div>
               </div>
             </div>

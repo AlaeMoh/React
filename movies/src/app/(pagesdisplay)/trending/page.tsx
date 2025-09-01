@@ -4,6 +4,9 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import "../../styles/home.css"
 import Toggles from "../toggles/page"
+import { useRouter } from 'next/navigation'
+
+
 type Movies = {
   id: number,
   title: string,
@@ -25,7 +28,8 @@ vote_count: number,
 export default function Page() {
 const [trendingMovies, setMovies] = useState<Movies[]>([])
 const [loading, setloading] = useState(true);
-    
+const router= useRouter()
+
 useEffect(()=>{
  const fetchMovieData= async ()=>{
   try{
@@ -41,6 +45,11 @@ useEffect(()=>{
  fetchMovieData()
         },[])
     
+
+  const handleSelect = (movieId: string) => {
+    router.push(`/moviedetails/${movieId}`); 
+  };
+
 if(loading){
  return <p className="text-center mt-5">Loading products...</p>;
    }
@@ -52,8 +61,8 @@ if(loading){
          </div>
          <div className="col-10">
                 {/* Heading */}
-      <h2 className="mb-4 text-center text-white pt-3">
-        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#FFFFFF"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg> 
+      <h2 className="mb-4 text-center pt-3">
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#9c0099ff"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg> 
           Trending Movies
       </h2>
 
@@ -71,16 +80,14 @@ if(loading){
                />
                </Link>
 
-              {/* Card Body */}
-              <div className="card-body p-2 bg-dark text-white rounded-4 rounded-top-0">
-                <h6 className="card-title text-center text-truncate" title={movie.title}>
-                  {movie.title}
-                </h6>
-                <p className="text-center text-muted mb-0">
-                  <i className="bi bi-star-fill text-warning me-1"></i>
-                  {movie.vote_average.toFixed(1)}
-                </p>
-              </div>
+            {/* Hover Overlay */}
+              <div className="overlay-details d-flex flex-column justify-content-center align-items-center text-center p-2 text-white">
+            <h6 className="mb-1">{movie.title}</h6>
+          <p className="mb-0">⭐ {movie.vote_average.toFixed(1)}</p>
+            <small className="text-muted">{movie.release_date}</small>
+            <button className='dbuttn btn' onClick={()=>handleSelect(movie.id.toString())}>View Details</button>
+                </div>
+
             </div>
           </div>
         ))}

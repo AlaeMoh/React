@@ -71,8 +71,8 @@ export default function Page({ params }: { params: Promise<{ genreId: string }> 
      </div>
      <div className="col-10">
             {/* Heading */}
-      <h2 className="mb-4 text-center text-white" >
-        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#FFFFFF"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg> 
+      <h2 className="mb-4 text-center" >
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#9c0099ff"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg> 
           {movieName} Movies
       </h2>
 
@@ -91,7 +91,7 @@ export default function Page({ params }: { params: Promise<{ genreId: string }> 
                </Link>
 
               {/* Card Body */}
-              <div className="card-body p-2 bg-dark text-white rounded-4 rounded-top-0">
+              <div className="card-body p-2 bg-dark rounded-4 rounded-top-0">
                 <h6 className="card-title text-center text-truncate" title={movie.title}>
                   {movie.title}
                 </h6>

@@ -102,6 +102,25 @@ export const searchMovies = async (query: string) => {
   }
 };
 
+export const fetchMovieTrailor= async (movieId:number)=>{
+  try{
+    const res = await fetch(`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`)
+    const data = await res.json();
+    const trailer = data.results.find(
+  (vid: any) => vid.type === "Trailer" && vid.site === "YouTube" && vid.official
+);
+
+if (trailer) {
+  const youtubeUrl = `https://www.youtube.com/embed/${trailer.key}`;
+  console.log("Trailer URL:", youtubeUrl);
+  return youtubeUrl
+}
+     return null;
+  }catch(err){
+         console.error("Error fetching Video:", err);
+         return null;
+      }
+}
 
 export const getUpcomingMovies= async ()=>{
   try{
@@ -109,6 +128,19 @@ export const getUpcomingMovies= async ()=>{
     const data = await res.json();
     return data.results;
 
+  }catch(err){
+         console.error("Error fetching products:", err);
+         return [];
+  }
+}
+
+
+export const getSimilarMovies= async (movieId:number)=>{
+  try{
+    const res= await fetch(`${BASE_URL}/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`)
+    const data = await res.json();
+    return data.results
+   
   }catch(err){
          console.error("Error fetching products:", err);
          return [];

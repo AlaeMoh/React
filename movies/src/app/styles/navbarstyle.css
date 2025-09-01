@@ -13,10 +13,15 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-    
+  color: #ededed;
   }
 
   .logo{
     color: var(--mainColor);
   }
 
+.bright-mode{
+    background: transparent !important;
+    border-color: transparent !important;
+    color: #ededed;
+}

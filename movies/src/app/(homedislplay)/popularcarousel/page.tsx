@@ -65,7 +65,7 @@ export default function Page() {
     }
   return (
    <div className="conatiner">
-       <h3 className='text-center text-white pb-3'><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#FFFFFF"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg>Popular Movies</h3>
+       <h3 className='text-center  pb-3'><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#9c0099ff"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg>Popular Movies</h3>
        <div className="position-relative">
      
          {/* Left Button */}
@@ -96,7 +96,7 @@ export default function Page() {
           </Link>
 
                  {/* Hover Overlay */}
-              <div className="overlay-details d-flex flex-column justify-content-center align-items-center text-center text-white p-2">
+              <div className="overlay-details d-flex flex-column justify-content-center align-items-center text-center  p-2">
             <h6 className="mb-1">{movie.title}</h6>
           <p className="mb-0">⭐ {movie.vote_average.toFixed(1)}</p>
             <small className="text-muted">{movie.release_date}</small>

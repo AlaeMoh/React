@@ -1,6 +1,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -8,6 +9,7 @@
     --background: #0a0a0a;
     --foreground: #ededed;
     --mainColor: #b73dae;
+
 
   }
 }
@@ -18,6 +20,7 @@ body {
   /* overflow-x: hidden; */
   background-color: #0a0a0a;
   font-family: cursive;
+  color: white !important;
 }
 
 body {
@@ -42,4 +45,25 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+
+
+body[data-theme="dark"] {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body[data-theme="light"] {
+  background-color: #f9f9f9;
+  color: #121212 !important;
+}
+
+body[data-theme="light"] .navbar {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: black !important;
+}
+
+body[data-theme="dark"] .navbar .nav-text {
+  color: white !important;
 }

@@ -1,24 +1,42 @@
 "use client"
-import React, { useEffect, useRef, useState } from 'react'
-import { fetchTrendingMovies, getImageUrl } from '../../services/api'
+import { getImageUrl, getSimilarMovies } from '@/app/services/api';
 import Link from 'next/link'
-import "../../styles/home.css"
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useRef, useState } from 'react'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../styles/home.css"
+import { faVideo } from '@fortawesome/free-solid-svg-icons';
 
-    type Movies = {
+type Movies = {
   id: number,
   title: string,
   poster_path: string,
-  vote_average: number,
-  vote_count: number,
-    release_date: string,
+  adult: boolean,
+  genres:Genre[],
+ backdrop_path: string,
+ genre_ids: number,
+media_type: string,
+original_language:string,
+original_title: string, 
+overview:string,
+popularity: number,
+release_date: string,
+video:boolean,
+vote_average: number,
+vote_count: number,
 
-  }
-export default function Page() {
-    const [trendingMovies, setMovies]= useState<Movies[]>([])
-    const [loading, setloading]= useState(true)
-    const rowRef = useRef<HTMLDivElement>(null);
-    const router= useRouter()
+}
+
+type Genre = {
+  id: number;
+  name: string;
+};
+export default function Page({ movieId }: { movieId: number }) {
+
+      const [similarMovies , setMovie]= useState<Movies[]>([])
+      const [loading , setloading]= useState(true)
+      const rowRef = useRef<HTMLDivElement>(null);
+      const router= useRouter()
 
   const scroll = (direction: "left" | "right") => {
     if (rowRef.current) {
@@ -29,34 +47,34 @@ export default function Page() {
       });
     }
   };
-
-
-
-    useEffect(()=>{
-        const fetchMovieData= async ()=>{
+ useEffect(()=>{
+    const fetchData = async ()=>{
         try{
-            const trending = await fetchTrendingMovies()
-            setMovies(trending)
-        }catch(error){
-            console.error("Error fetching products:", error);
-        }finally{
-            setloading(false)
-        }
-        }
-        fetchMovieData()
-    },[])
-
-        if(loading){
-         return <p className="text-center mt-5">Loading products...</p>;
+            const movies = await getSimilarMovies(movieId)
+            setMovie(movies)
+            console.log(movies)
+        }catch (error) {
+        console.error("Error fetching movie or trailer:", error);
+      } finally {
+        setloading(false);
+      }
     }
-     const handleSelect = (movieId: string) => {
+    fetchData()
+ },[movieId])
+ 
+
+
+   const handleSelect = (movieId: string) => {
     router.push(`/moviedetails/${movieId}`); 
   };
 
+  if(loading){
+         return <p className="text-center mt-5">Loading products...</p>;
+    }
+
   return (
-    
-    <div className="conatiner">
-    <h3 className='text-center pb-3'><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="40px" fill="#9c0099ff"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg> Trending Movies</h3>
+    <div className="conatiner pt-5">
+    <h3 className='text-center pb-3'><FontAwesomeIcon icon={faVideo} className="text-dark" /> Similar Movies</h3>
     <div className="position-relative">
   
       {/* Left Button */}
@@ -74,7 +92,7 @@ export default function Page() {
         className="d-flex overflow-hidden"
         style={{ scrollBehavior: "smooth" }}
       >
-        {trendingMovies.map((movie: Movies) => (
+        {similarMovies?.map((movie: Movies) => (
             <div key={movie.id} className="me-3" style={{ minWidth: "160px" }}>
           <div className="pictures position-relative overflow-hidden rounded">
              <Link href={`/moviedetails/${movie.id}`}>
@@ -109,11 +127,5 @@ export default function Page() {
       </button>
     </div>
   </div>
-
-
-
-  );
+  )
 }
-
-
-

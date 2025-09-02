@@ -1,6 +1,7 @@
 [build]
-  base = "movies"
+ base = "movies"
   command = "npm run build"
+  publish = ".next"
   
 
 [[plugins]]

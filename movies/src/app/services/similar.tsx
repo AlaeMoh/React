@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 import { getImageUrl, getSimilarMovies } from '@/app/services/api';
 import Link from 'next/link'
@@ -74,7 +75,7 @@ export default function Page({ movieId }: { movieId: number }) {
 
   return (
     <div className="conatiner pt-5">
-    <h3 className='text-center pb-3'><FontAwesomeIcon icon={faVideo} className="text-dark" /> Similar Movies</h3>
+    <h3 className='text-center pb-3'><FontAwesomeIcon icon={faVideo} className="text-white" /> Similar Movies</h3>
     <div className="position-relative">
   
       {/* Left Button */}

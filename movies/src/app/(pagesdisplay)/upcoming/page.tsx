@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
-import {  fetchTrendingMovies, getImageUrl, getUpcomingMovies } from '@/app/services/api';
+import {   getImageUrl, getUpcomingMovies } from '@/app/services/api';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import "../../styles/home.css"

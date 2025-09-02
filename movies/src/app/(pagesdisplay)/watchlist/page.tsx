@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { Trash2 } from "lucide-react";
 import { getImageUrl } from "@/app/services/api";
 import "../../styles/carousel.css"
@@ -60,13 +60,7 @@ export default function Watchlist() {
                 <Trash2 className="w-5 h-5" />
               </button>      
 
-              {/* <div className="p-3 ">
-                <p className="">
-                  {movie.title}
-                </p>
-            
-  
-              </div> */}
+
 
             </div>
           ))}

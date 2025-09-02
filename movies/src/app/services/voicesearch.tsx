@@ -9,6 +9,7 @@ type VoiceSearchProps= {
 export default function Voicesearch({onResult}: VoiceSearchProps) {
   const startListening =()=>{
     const SpeechRecognition= 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
     if(!SpeechRecognition){
       alert("Your browser does not support Speech Recognition.");
@@ -21,6 +22,7 @@ export default function Voicesearch({onResult}: VoiceSearchProps) {
     recognition.maxAlternarive= 1
     recognition.start();
     
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     recognition.onresult= (event:any)=>{
       const transcript = event.results[0][0].transcript;
       onResult(transcript)

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 import {  fetchTrendingMovies, getImageUrl } from '@/app/services/api';
 import Link from 'next/link';

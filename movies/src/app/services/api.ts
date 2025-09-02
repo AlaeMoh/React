@@ -107,6 +107,7 @@ export const fetchMovieTrailor= async (movieId:number)=>{
     const res = await fetch(`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`)
     const data = await res.json();
     const trailer = data.results.find(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (vid: any) => vid.type === "Trailer" && vid.site === "YouTube" && vid.official
 );
 

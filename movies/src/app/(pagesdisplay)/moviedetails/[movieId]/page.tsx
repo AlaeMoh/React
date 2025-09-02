@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 import { fetchMovieDetails, fetchMovieTrailor, getImageUrl } from '@/app/services/api';
 import React, { use, useEffect, useState } from 'react'

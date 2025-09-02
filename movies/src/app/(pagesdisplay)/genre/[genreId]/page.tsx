@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React, { use, useEffect, useState } from 'react'
 import "../../../styles/home.css"
 import Toggles from "../../toggles/page"
+import { useRouter } from 'next/navigation';
 
 type Movies = {
   id: number,
@@ -37,7 +38,7 @@ export default function Page({ params }: { params: Promise<{ genreId: string }> 
     const [genreMovies, setMovies] = useState<Movies[]>([])
     const [loading, setloading] = useState(true);
     const [movieName, setName] =useState("")
-    
+    const router= useRouter()
 
     useEffect(() => {
     const fetchData = async () => {
@@ -60,6 +61,12 @@ export default function Page({ params }: { params: Promise<{ genreId: string }> 
 
     fetchData();
   }, [genreIdNum]);
+
+
+     const handleSelect = (movieId: string) => {
+    router.push(`/moviedetails/${movieId}`); 
+  };
+
 
        if(loading){
       return <p className="text-center mt-5">Loading products...</p>;}
@@ -91,18 +98,17 @@ export default function Page({ params }: { params: Promise<{ genreId: string }> 
                />
                </Link>
 
-              {/* Card Body */}
-              <div className="card-body p-2 bg-dark rounded-4 rounded-top-0">
-                <h6 className="card-title text-center text-truncate" title={movie.title}>
-                  {movie.title}
-                </h6>
-                <p className="text-center text-muted mb-0">
-                  <i className="bi bi-star-fill text-warning me-1"></i>
-                  {movie.vote_average.toFixed(1)}
-                </p>
+                               {/* Hover Overlay */}
+              <div className="overlay-details d-flex flex-column justify-content-center align-items-center text-center p-2 text-white">
+            <h6 className="mb-1">{movie.title}</h6>
+          <p className="mb-0">⭐ {movie.vote_average.toFixed(1)}</p>
+            <small className="text-muted">{movie.release_date}</small>
+            <button className='dbuttn btn' onClick={()=>handleSelect(movie.id.toString())}>View Details</button>
+                </div>
               </div>
+
             </div>
-          </div>
+          
         ))}
       </div>
      </div>

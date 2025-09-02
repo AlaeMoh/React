@@ -1,5 +1,5 @@
 [build]
-  base = "react/movies"
+  base = "movies"
   command = "npm run build"
   publish = "react/movies/.next"
 

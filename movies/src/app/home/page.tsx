@@ -6,6 +6,7 @@ import Trends from "../(homedislplay)/trendingcarousel/page"
 import Popular from "../(homedislplay)/popularcarousel/page"
 import Upcoming from "../(homedislplay)/upcomingcarousel/page"
 import TopRated from "../(homedislplay)/topratedcarousel/page"
+import Continue from "../(homedislplay)/continuewatch/page"
 
 export default function Page() {
 
@@ -14,6 +15,9 @@ export default function Page() {
     
       <div className="carousel">
    <CarouselHome></CarouselHome>
+ <div className="popular pt-5 pb-5">
+    <Continue></Continue>
+   </div>
    <div className="trends pt-5 pb-5">
     <Trends></Trends>
    </div>

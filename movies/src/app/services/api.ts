@@ -148,6 +148,17 @@ export const getSimilarMovies= async (movieId:number)=>{
   }
 }
 
+export const fetchPeople= async ()=>{
+  try{
+    const res= await fetch(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`)
+    const data = await res.json();
+    return data.results
+   
+  }catch(err){
+         console.error("Error fetching products:", err);
+         return [];
+  }
+}
 export const getImageUrl = (path: string | null, size = "original") => {
   if (!path) {
     return "https://via.placeholder.com/400x600?text=No+Image+Available";
